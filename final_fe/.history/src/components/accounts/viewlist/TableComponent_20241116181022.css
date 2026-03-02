@@ -1,0 +1,15 @@
+.table-header {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .table-header-text {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .table-responsive {
+    margin: 20px 0;
+  }
+  

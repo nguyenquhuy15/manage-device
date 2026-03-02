@@ -1,0 +1,3 @@
+class TypeApi{
+    constructor()
+}

@@ -1,0 +1,521 @@
+{
+	"info": {
+		"_postman_id": "2ab9c929-2fad-48ad-bfb7-c0b9ad99384e",
+		"name": "Accounts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3802039"
+	},
+	"item": [
+		{
+			"name": "exists",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "check username exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/username/exists?username=duynn03",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"username",
+										"exists"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "duynn03"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check email exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/email/exists?username=duynn03@gmail.com",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"email",
+										"exists"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "duynn03@gmail.com"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check username or email exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/usernameOrEmail/exists?usernameOrEmail=duynn03",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"usernameOrEmail",
+										"exists"
+									],
+									"query": [
+										{
+											"key": "usernameOrEmail",
+											"value": "duynn03"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "Department",
+			"item": [
+				{
+					"name": "Get department info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"HTTP Status is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/accounts/department",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"accounts",
+								"department"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get All Accounts No Department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Accounts No Department - sort - id",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment?sort=id,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "id,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Accounts No Department - sort - username",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment?sort=username,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "username,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Accounts No Department - sort - fullname",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment?sort=fullname,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "fullname,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Accounts No Department - sort - role",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment?sort=role,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									],
+									"query": [
+										{
+											"key": "sort",
+											"value": "role,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Accounts No Department - search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/noDepartment?q=tung",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"noDepartment"
+									],
+									"query": [
+										{
+											"key": "q",
+											"value": "tung"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get info account by usernames Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/accounts/info?usernames=linh.nguyenthi, tung.nguyenxuan, lam.nguyentung, hung.nguyenthe",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"accounts",
+										"info"
+									],
+									"query": [
+										{
+											"key": "usernames",
+											"value": "linh.nguyenthi, tung.nguyenxuan, lam.nguyentung, hung.nguyenthe"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": []
+				}
+			]
+		}
+	]
+}

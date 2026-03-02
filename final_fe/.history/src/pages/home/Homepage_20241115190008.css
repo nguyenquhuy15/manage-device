@@ -1,0 +1,73 @@
+/* Hiệu ứng hover */
+.hover-card {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Thiết kế box */
+.custom-card {
+  background-color: #DCF1F7;
+  border-radius: 15px;
+  color: #343a40;
+  border-width: 3px;
+  border-style: solid;
+}
+
+/* Mỗi box có một màu border khác nhau */
+.device-card {
+  border-color: #FF6F61; /* Màu đỏ cam cho quản lý thiết bị */
+}
+
+.account-card {
+  border-color: #4CAF50; /* Màu xanh lá cho quản lý tài khoản */
+}
+
+.department-card {
+  border-color: #FFB74D; /* Màu vàng cam cho khoa/viện */
+}
+
+/* Icon styling */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.device-card .icon {
+  color: #FF6F61; /* Icon màu đỏ cam */
+}
+
+.account-card .icon {
+  color: #4CAF50; /* Icon màu xanh lá */
+}
+
+.department-card .icon {
+  color: #FFB74D; /* Icon màu vàng cam */
+}
+
+/* Tiêu đề */
+.device-card .card-title {
+  color: #FF6F61;
+}
+
+.account-card .card-title {
+  color: #4CAF50;
+}
+
+.department-card .card-title {
+  color: #FFB74D;
+}
+
+/* Tiêu đề Trang */
+h1 {
+  font-weight: 700;
+  color: #34495e;
+  margin-top: 20px;
+}

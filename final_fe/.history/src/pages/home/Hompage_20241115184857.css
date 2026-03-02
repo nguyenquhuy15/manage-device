@@ -1,0 +1,51 @@
+/* Hiệu ứng hover */
+.hover-card {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .hover-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Thiết kế box */
+  .custom-card {
+    border: none;
+    border-radius: 15px;
+    color: #fff;
+  }
+  
+  /* Thiết kế màu sắc */
+  .custom-card:nth-child(1) {
+    background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  }
+  
+  .custom-card:nth-child(2) {
+    background: linear-gradient(135deg, #34e89e, #0f3443);
+  }
+  
+  .custom-card:nth-child(3) {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  }
+  
+  /* Icon styling */
+  .icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+    color: #fff;
+  }
+  
+  /* Tiêu đề */
+  .card-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  

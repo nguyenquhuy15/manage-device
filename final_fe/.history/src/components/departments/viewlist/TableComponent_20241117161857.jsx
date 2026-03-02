@@ -1,0 +1,120 @@
+import React from "react";
+import { OverlayTrigger, Table, Tooltip } from "react-bootstrap";
+import { Edit2, Trash } from "react-feather";
+import SortComponent from "../../common/table/SortComponent";
+
+const TableComponent = React.memo((props) => {
+  return (
+    <>
+      <Table striped hover bordered>
+        <thead>
+          <tr>
+            <th style={{ width: "20%" }}>
+              Department Name
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="departmentsName"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "20%" }}>
+              Manager
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="manager.name"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "20%" }}>
+              Manager
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="manager.fullname"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "15%" }}>
+              Total member
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="memberSize"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "20%" }}>
+              Creator
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="creator.fullname"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "15%" }}>
+              Created Date
+              <SortComponent
+                currentSort={props.currentSort}
+                setCurrentSort={props.setCurrentSort}
+                apiField="createdDateTime"
+                resetPaging={props.resetPaging}
+              />
+            </th>
+            <th style={{ width: "10%" }}>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {props.departments.map((department) => (
+            <tr
+              key={department.id}
+              onClick={() => props.onClickItem(department.id)}
+            >
+              <td>{department.name}</td>
+              <td>
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={<Tooltip>{department.managerEmail || ""}</Tooltip>}
+                >
+                  <span>{department.managerFullname || ""}</span>
+                </OverlayTrigger>
+              </td>
+              <td>{department.memberSize}</td>
+              <td>
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={<Tooltip>{department.creatorEmail || ""}</Tooltip>}
+                >
+                  <span>{department.creatorFullname || ""}</span>
+                </OverlayTrigger>
+              </td>
+              <td>{department.createdDateTime}</td>
+              <td className="table-action text-center">
+                <span
+                  onClick={(e) => {
+                    props.onUpdateItem(department.id);
+                    e.stopPropagation();
+                  }}
+                >
+                  <Edit2 className="align-middle me-1" size={18} />
+                </span>
+                <span
+                  onClick={(e) => {
+                    props.onDeleteItem(department.id);
+                    e.stopPropagation();
+                  }}
+                >
+                  <Trash className="align-middle" size={18} />
+                </span>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </>
+  );
+});
+
+export default TableComponent;

@@ -1,0 +1,12 @@
+<Form
+  id="update-device-form"
+  onSubmit={handleSubmit}
+  style={{
+    backgroundColor: "#d0e6f7", // Màu nền đậm hơn
+    padding: "20px", // Khoảng cách bên trong
+    borderRadius: "8px", // Bo góc
+    border: "1px solid #ccc", // Viền nhẹ
+  }}
+>
+  {/* Nội dung form */}
+</Form>

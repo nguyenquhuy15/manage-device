@@ -1,0 +1,2333 @@
+{
+	"info": {
+		"_postman_id": "3c402b2b-d010-4603-945e-00b97cd0b511",
+		"name": "Departments",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3802039"
+	},
+	"item": [
+		{
+			"name": "View List",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get All Departments",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - search",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&q=mar",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "q",
+											"value": "mar"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - filter - min & max member size",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&minMemberSize=2&maxMemberSize=3",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "minMemberSize",
+											"value": "2"
+										},
+										{
+											"key": "maxMemberSize",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - filter - min & max CreatedDate",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&minCreatedDate=2021-08-07&maxCreatedDate=2022-06-07&sort=createdDateTime,asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "minCreatedDate",
+											"value": "2021-08-07"
+										},
+										{
+											"key": "maxCreatedDate",
+											"value": "2022-06-07"
+										},
+										{
+											"key": "sort",
+											"value": "createdDateTime,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - departmentName",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=name,asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "name,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - managerFullname",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=manager.fullname,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "manager.fullname,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - memberSize",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=memberSize,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "memberSize,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - creatorFullname",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=creator.fullname,desc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "creator.fullname,desc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - createdDateTime",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=createdDateTime,asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "createdDateTime,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get All Departments - sort - updatedDateTime",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments?page=1&size=5&sort=updatedDateTime,asc",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "5"
+										},
+										{
+											"key": "sort",
+											"value": "updatedDateTime,asc"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": []
+				}
+			]
+		},
+		{
+			"name": "View Detail",
+			"item": [
+				{
+					"name": "Detail Department",
+					"item": [
+						{
+							"name": "Positive",
+							"item": [
+								{
+									"name": "Get Department By Id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"HTTP Status is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"})"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/departments/1",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"departments",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Negative",
+							"item": [
+								{
+									"name": "Get Department By Id - id not exists",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"HTTP Status is 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"})\r",
+													"\r",
+													"var jsonData = pm.response.json();\r",
+													"pm.test(\"department id exists\", function () {\r",
+													"    pm.expect(jsonData.detailMessage).to.contain(\"Department id not exists!\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{host}}/departments/1000000",
+											"host": [
+												"{{host}}"
+											],
+											"path": [
+												"departments",
+												"1000000"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Accounts In Department",
+					"item": [
+						{
+							"name": "View List",
+							"item": [
+								{
+									"name": "Positive",
+									"item": [
+										{
+											"name": "Get All Account By DepartmentId",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - search",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&q=thiet",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "q",
+															"value": "thiet"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - filter - min & max CreatedDate",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&minCreatedDate=2020-11-02&maxCreatedDate=2023-01-22&sort=createdDateTime,asc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "minCreatedDate",
+															"value": "2020-11-02"
+														},
+														{
+															"key": "maxCreatedDate",
+															"value": "2023-01-22"
+														},
+														{
+															"key": "sort",
+															"value": "createdDateTime,asc"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - filter - role",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&role=MANAGER",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "role",
+															"value": "MANAGER"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - filter - status",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&status=BLOCK",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "status",
+															"value": "BLOCK"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - sort - username",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&sort=username,asc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "sort",
+															"value": "username,asc"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - sort - fullname",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&sort=fullname,asc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "sort",
+															"value": "fullname,asc"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - sort - role",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&sort=role,desc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "sort",
+															"value": "role,desc"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - sort - status",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&sort=status,asc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "sort",
+															"value": "status,asc"
+														}
+													]
+												}
+											},
+											"response": []
+										},
+										{
+											"name": "Get All Account By DepartmentId - sort - createdDateTime",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/3/accounts?page=1&size=5&sort=createdDateTime,asc",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"3",
+														"accounts"
+													],
+													"query": [
+														{
+															"key": "page",
+															"value": "1"
+														},
+														{
+															"key": "size",
+															"value": "5"
+														},
+														{
+															"key": "sort",
+															"value": "createdDateTime,asc"
+														}
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Negative",
+									"item": [
+										{
+											"name": "Get All Account By DepartmentId - id not exists",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 400\", function () {\r",
+															"    pm.response.to.have.status(400);\r",
+															"})\r",
+															"\r",
+															"var jsonData = pm.response.json();\r",
+															"pm.test(\"department id exists\", function () {\r",
+															"    pm.expect(jsonData.detailMessage).to.contain(\"Department id not exists!\");\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "GET",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/1000000/accounts",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"1000000",
+														"accounts"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Remove",
+							"item": [
+								{
+									"name": "Positive",
+									"item": [
+										{
+											"name": "Remove Department of Account",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 200\", function () {\r",
+															"    pm.response.to.have.status(200);\r",
+															"})"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/accounts/2,4",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"accounts",
+														"2,4"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								},
+								{
+									"name": "Negative",
+									"item": [
+										{
+											"name": "Remove Department of Account - account id not exists",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															"pm.test(\"HTTP Status is 400\", function () {\r",
+															"    pm.response.to.have.status(400);\r",
+															"})\r",
+															"\r",
+															"var jsonData = pm.response.json();\r",
+															"pm.test(\"account id exists\", function () {\r",
+															"    pm.expect(jsonData.detailMessage).to.contain(\"Account id not exists!\");\r",
+															"});"
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"auth": {
+													"type": "bearer",
+													"bearer": [
+														{
+															"key": "token",
+															"value": "{{token}}",
+															"type": "string"
+														}
+													]
+												},
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{host}}/departments/accounts/10000",
+													"host": [
+														"{{host}}"
+													],
+													"path": [
+														"departments",
+														"accounts",
+														"10000"
+													]
+												}
+											},
+											"response": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Create",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Create Department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"new Department\",\r\n    \"managerId\": 18,\r\n    \"employeeIds\": [9, 12,13]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Create Department - name exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"department name exists\", function () {\r",
+											"    pm.expect(jsonData.exception.name).to.contain(\"Department name exists already!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Marketing\",\r\n    \"managerId\": 18\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Department - manager id has already department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"Manager no department\", function () {\r",
+											"    pm.expect(jsonData.exception.managerId).to.contain(\"Account has already a department!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"new Department\",\r\n    \"managerId\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Department - employee id has already department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"Employee no department\", function () {\r",
+											"    pm.expect(jsonData.detailMessage).to.contain(\"Account has already a department!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"new Department\",\r\n    \"managerId\": 18,\r\n    \"employeeIds\": [11, 12,13,14,16]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Update",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Update Department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"new Department 2\",\r\n    \"managerId\": 9\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/21",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"21"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Update Department - name exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"department name exists\", function () {\r",
+											"    pm.expect(jsonData.exception.name).to.contain(\"Department name exists already!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Marketing\",\r\n    \"managerId\": 18\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/21",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"21"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Department - managerId exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.exception.managerId).to.contain(\"Account id not exists!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Marketing\",\r\n    \"managerId\": 10000\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/21",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"21"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Delete",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Delete Department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments/19",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"19"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Delete Department - id not exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.detailMessage).to.contain(\"Department id not exists!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments/10000",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"10000"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Department - department has users",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.detailMessage).to.contain(\"Department has users!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments/1",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Import Accounts",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "Get All Departments For Filter",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments/filter",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"filter"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Import Account Template",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/files/excel/templates/ImportAccountIntoDepartmentTemplateFile",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"files",
+										"excel",
+										"templates",
+										"ImportAccountIntoDepartmentTemplateFile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Import Accounts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"managerId\": 18,\r\n    \"employeeIds\": [9, 12,13]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/20/accounts",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"20",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": [
+						{
+							"name": "Import Accounts - department id not exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.detailMessage).to.contain(\"Department id not exists!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"managerId\": 18,\r\n    \"employeeIds\": [9, 12,13]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/10000/accounts",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"10000",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Import Accounts - manager has already department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.exception.managerId).to.contain(\"Account has already a department!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"managerId\": 1,\r\n    \"employeeIds\": [9, 12,13]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/20/accounts",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"20",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Import Accounts - employee has already department",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"})\r",
+											"\r",
+											"var jsonData = pm.response.json();\r",
+											"pm.test(\"manager id exists\", function () {\r",
+											"    pm.expect(jsonData.detailMessage).to.contain(\"Account has already a department!\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"managerId\": 18,\r\n    \"employeeIds\": [1, 12,13]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{host}}/departments/20/accounts",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"20",
+										"accounts"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "exists",
+			"item": [
+				{
+					"name": "Positive",
+					"item": [
+						{
+							"name": "check name exists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"HTTP Status is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{host}}/departments/name/exists?name=Sale",
+									"host": [
+										"{{host}}"
+									],
+									"path": [
+										"departments",
+										"name",
+										"exists"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Sale"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Negative",
+					"item": []
+				}
+			]
+		}
+	]
+}

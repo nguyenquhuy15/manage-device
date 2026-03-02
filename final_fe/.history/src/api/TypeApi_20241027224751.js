@@ -1,0 +1,26 @@
+import { PAGING } from "../constants";
+import AuthorApi from "./baseAPI/AuthorBaseApi";
+import UnauthorApi from "./baseAPI/UnauthorBaseApi";
+class TypeApi {
+  constructor() {
+    this.url = "/types";
+  }
+
+  getTypeName = (search, sortField, isAsc) => {
+    let url = `${this.url}/name`;
+
+    // search
+    if (search) {
+      url += `?q=${search}`;
+    }
+
+    // sort
+    if (sortField) {
+      url += url.includes("?") ? `&` : "?";
+      url += `sort=${sortField},${isAsc ? "asc" : "desc"}`;
+    }
+
+    return AuthorApi.get(url);
+  };
+}
+export default new TypeApi();

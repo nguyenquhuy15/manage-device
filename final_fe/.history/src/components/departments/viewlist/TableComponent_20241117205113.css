@@ -1,0 +1,14 @@
+.table-component .action-icon {
+    cursor: pointer;
+    margin-left: 8px;
+    transition: color 0.2s;
+  }
+  
+  .table-component .action-icon:hover {
+    color: #007bff; /* Màu khi hover */
+  }
+  
+  .table-component tbody tr:hover {
+    background-color: #f5f5f5; /* Màu nền khi hover hàng */
+  }
+  

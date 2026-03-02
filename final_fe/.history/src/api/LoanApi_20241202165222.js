@@ -1,0 +1,49 @@
+import { PAGING } from "../constants";
+import AuthorApi from "./baseAPI/AuthorBaseApi";
+import UnauthorApi from "./baseAPI/UnauthorBaseApi";
+
+class LoanAPI {
+  constructor() {
+    this.url = "/loans";
+  }
+
+  getAll = ({
+    page,
+    sortField,
+    isAsc,
+    search,
+    loanDate,
+    returnDate,
+  }) => {
+    let url = this.url;
+
+    // paging
+    url += `?page=${page}&size=${PAGING.SIZE}`;
+
+    // sort
+    if (!sortField) {
+      sortField = "id";
+      isAsc = false;
+    }
+    url += `&sort=${sortField},${isAsc ? "asc" : "desc"}`;
+
+    // search
+    if (search) {
+      url += `&q=${search}`;
+    }
+
+    // filter
+    if (loanDate) {
+      url += `&loanDate=${loanDate}`;
+    }
+    if (minPrice) {
+      url += `&minPrice=${minPrice}`;
+    }
+    if (maxPrice) {
+      url += `&maxPrice=${maxPrice}`;
+    }
+    return AuthorApi.get(url);
+  };
+}
+
+export default new LoanAPI();

@@ -1,0 +1,426 @@
+import React, { useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useBoolean from "../../hooks/useBoolean";
+import useNotification from "../../hooks/useNotification";
+import { Helmet } from "react-helmet-async";
+import { Container } from "react-bootstrap";
+import TypeApi from "../../api/TypeApi";
+
+import TypeTableComponent from "../../components/types/viewlist/TypeTableComponent";
+import TypeNoDataComponent from "../../components/types/viewlist/TypeNoDataComponent";
+import CreateDepartmentModal from "../../components/departments/create/CreateDepartmentModal";
+import UpdateDepartmentModal from "../../components/departments/update/UpdateDepartmentModal";
+import DeleteDepartmentModal from "../../components/departments/delete/DeleteDepartmentModal";
+import ImportAccountModal from "../../components/departments/import/ImportAccountModal";
+import * as XLSX from "xlsx";
+
+const TypePage = () => {
+  const navigate = useNavigate();
+  const [showSuccessMessage, showErrorMessage] = useNotification();
+
+  const [types, setTypes] = useState([]);
+  // paging
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  // sorting
+  const [currentSort, setCurrentSort] = useState({
+    sortField: "id",
+    isAsc: false,
+  });
+  // search
+  const [currentSearch, setCurrentSearch] = useState("");
+
+  // // filter
+  // const [currentFilter, setCurrentFilter] = useState({
+  //   minDate: "",
+  //   maxDate: "",
+  //   minMember: "",
+  //   maxMember: "",
+  // });
+  // refresh table
+  const [timeRefreshTable, setTimeRefreshTable] = useState(new Date());
+  // create
+  const [
+    isShowCreateTypeModal,
+    showCreateTypeModal,
+    hideCreateTypeModal,
+  ] = useBoolean(false);
+
+
+  // const [timeRefreshTableEmployee, setTimeRefreshTableEmployee] = useState(
+  //   new Date()
+  // );
+  const [timeRefreshCreateForm, setTimeRefreshCreateForm] = useState(
+    new Date()
+  );
+  // const [isShowEmployeeTable, showEmployeeTable, hideEmployeeTable] =
+  //   useBoolean(false);
+
+  // // update
+  // const [
+  //   isShowUpdateDepartmentModal,
+  //   showUpdateDepartmentModal,
+  //   hideUpdateDepartmentModal,
+  // ] = useBoolean(false);
+  // const [managersForUpdate, setManagersForUpdate] = useState([]);
+  // const [detailDepartmentInfo, setDetailDepartmentInfo] = useState([]);
+  // const [timeRefreshUpdateForm, setTimeRefreshUpdateForm] = useState(
+  //   new Date()
+  // );
+
+  // // delete
+  // const [
+  //   isShowDeleteDepartmentModal,
+  //   showDeleteDepartmentModal,
+  //   hideDeleteDepartmentModal,
+  // ] = useBoolean(false);
+  // const [deletingDepartmentId, setDeletingDepartmentId] = useState();
+
+
+  useEffect(() => {
+    getListTypes();
+  }, [currentPage, currentSort, currentSearch]);
+
+    const existsByTypeName = useCallback(async (name) => {
+      return await TypeApi.existsByName(name);
+    }, []);
+
+
+  const getListTypes = async () => {
+    const data = await TypeApi.getAll({
+      page: currentPage,
+      sortField: currentSort.sortField,
+      isAsc: currentSort.isAsc,
+      search: currentSearch,
+    });
+    setTypes(data.content);
+    setTotalPages(data.totalPages);
+  };
+
+  const resetPaging = useCallback(() => setCurrentPage(1), []);
+
+  const resetCurrentSort = useCallback(
+    () => setCurrentSort({ sortField: "id", isAsc: false }),
+    []
+  );
+
+  const resetCurrentSearch = useCallback(() => {
+    setCurrentSearch("");
+  }, []);
+
+  const isSearchEmpty = () => {
+    return !currentSearch || currentSearch.length === 0;
+  };
+
+  // const resetCurrentFilter = useCallback(() => {
+  //   setCurrentFilter({
+  //     minDate: "",
+  //     maxDate: "",
+  //     minMember: "",
+  //     maxMember: "",
+  //   });
+  // }, []);
+
+  // const isFilterEmpty = () => {
+  //   return;
+  //   !currentFilter.minDate &&
+  //     !currentFilter.maxDate &&
+  //     !currentFilter.minMember &&
+  //     !currentFilter.maxMember;
+  // };
+
+  const onResetTable = useCallback(() => {
+    resetPaging();
+    resetCurrentSort();
+    resetCurrentSearch();
+    // resetCurrentFilter();
+    setTimeRefreshTable(new Date());
+  }, []);
+
+  // const onClickDepartmentItem = useCallback((departmentId) => {
+  //   navigate(`/departments/${departmentId}`);
+  // }, []);
+
+  // const existsByDepartmentName = useCallback(async (name) => {
+  //   return await DepartmentApi.existsByName(name);
+  // }, []);
+
+  const onShowCreateTypeModal = () => {
+    // reset modal
+    setTimeRefreshCreateForm(new Date());
+
+    // show modal
+    showCreateTypeModal();
+  };
+
+
+  const onCreateType = useCallback(
+    async (name, code, quantity) => {
+      // call api
+      await TypeApi.create(name, code, quantity);
+      // show notification
+      showSuccessMessage("Tạo loại thiết bị thành công!");
+      // hide modal
+      hideCreateTypeModal();
+      // reset department table
+      onResetTable();
+    },
+    []
+  );
+
+  // const onShowUpdateDepartmentModal = async (departmentId) => {
+  //   // show modal
+  //   showUpdateDepartmentModal();
+  //   // reset modal
+  //   await getListManagersForUpdate(departmentId);
+  //   await getDetailDepartmentInfo(departmentId);
+  //   setTimeRefreshUpdateForm(new Date());
+  // };
+
+  // const getListManagersForUpdate = async (departmentId) => {
+  //   const data = await DepartmentApi.getAllAccountsByDepartment(departmentId);
+  //   setManagersForUpdate(data.content);
+  // };
+
+  // const getDetailDepartmentInfo = async (departmentId) => {
+  //   const data = await DepartmentApi.getDetail(departmentId);
+  //   setDetailDepartmentInfo(data);
+  // };
+
+  // const onUpdateDepartment = useCallback(
+  //   async (departmentId, name, managerId) => {
+  //     // call api
+  //     await DepartmentApi.update(departmentId, name, managerId);
+  //     // show notification
+  //     showSuccessMessage("Update Department Successfully!");
+  //     // hide modal
+  //     hideUpdateDepartmentModal();
+  //     // reset department table
+  //     onResetTable();
+  //   },
+  //   []
+  // );
+
+  // const onShowDeleteDepartmentModal = useCallback((departmentId) => {
+  //   // show modal
+  //   showDeleteDepartmentModal();
+  //   // save department id
+  //   setDeletingDepartmentId(departmentId);
+  // }, []);
+
+  // const onDeleteDepartment = useCallback(async () => {
+  //   try {
+  //     // call api
+  //     await DepartmentApi.delete(deletingDepartmentId);
+  //     // show notification
+  //     showSuccessMessage("Delete Department Successfully!");
+  //     // hide modal
+  //     hideDeleteDepartmentModal();
+  //     // reset department table
+  //     onResetTable();
+  //   } catch (error) {
+  //     if (error.response.status === 400) {
+  //       showErrorMessage(
+  //         "There are users in the department. You cann't delete this department!"
+  //       );
+  //     } else {
+  //       throw error;
+  //     }
+  //   }
+  // }, [deletingDepartmentId]);
+
+  // const onShowImportAccountModal = useCallback(async () => {
+  //   // show modal
+  //   showImportAccountModal();
+  //   // reset modal
+  //   await getDepartmentsForImport();
+  //   setAccountsForImport([]);
+  //   hideImportAccountTable();
+  //   setTimeRefreshImportForm(new Date());
+  // }, []);
+
+  // const getDepartmentsForImport = async () => {
+  //   const data = await DepartmentApi.getAllDepartmentForFilter();
+  //   setDepartmentsForImport(data);
+  // };
+
+  // const onChangeExcelFile = useCallback(
+  //   (event, file, setFieldError, setFieldValue) => {
+  //     let reader = new FileReader();
+
+  //     // read file
+  //     reader.onload = function (e) {
+  //       let workbook = XLSX.read(e.target.result, {
+  //         type: "binary",
+  //       });
+
+  //       // get first sheet
+  //       let firstSheet = workbook.SheetNames[0];
+  //       let rows = XLSX.utils.sheet_to_row_object_array(
+  //         workbook.Sheets[firstSheet]
+  //       );
+  //       let jsonArray = JSON.stringify(rows);
+  //       jsonArray = JSON.parse(jsonArray);
+  //       // format key
+  //       renameOfAccountKeys(jsonArray);
+  //       // get fullname & id
+  //       getMoreAccountInfo(jsonArray, event, setFieldError, setFieldValue);
+  //     };
+
+  //     // error
+  //     reader.onerror = function (exception) {
+  //       console.log(exception);
+  //     };
+
+  //     reader.readAsBinaryString(file);
+  //   },
+  //   []
+  // );
+
+  // const renameOfAccountKeys = (jsonArray) => {
+  //   jsonArray.forEach((item) => {
+  //     delete Object.assign(item, { username: item.Username })["Username"];
+  //     delete Object.assign(item, { role: item.Role })["Role"];
+  //   });
+  // };
+
+  // const getMoreAccountInfo = async (
+  //   accounts,
+  //   event,
+  //   setFieldError,
+  //   setFieldValue
+  // ) => {
+  //   try {
+  //     const data = await UserApi.getInfoAccountsByUsernames(
+  //       accounts.map((account) => account.username)
+  //     );
+
+  //     for (const item of data) {
+  //       let account = accounts.find(
+  //         (account) => account.username == item.username
+  //       );
+  //       account.id = item.id;
+  //       account.fullname = item.fullname;
+  //     }
+  //     setAccountsForImport(accounts);
+  //     showImportAccountTable();
+  //   } catch (error) {
+  //     setAccountsForImport(accounts);
+  //     hideImportAccountTable();
+  //     if (error.response.status === 400) {
+  //       console.log(error);
+  //       setFieldError(
+  //         "excelFile",
+  //         JSON.stringify(error.response.data.exception)
+  //       );
+  //       setFieldValue("excelFile", "", false);
+  //       event.target.value = null;
+  //     } else {
+  //       throw error;
+  //     }
+  //   }
+  // };
+
+  // const onImportAccounts = useCallback(
+  //   async (departmentId, managerId, employeeIds) => {
+  //     // call api
+  //     await DepartmentApi.importAccounts(departmentId, managerId, employeeIds);
+  //     // show notification
+  //     showSuccessMessage("Import Accounts Successfully!");
+  //     // hide modal
+  //     hideImportAccountModal();
+  //     // reset department table
+  //     onResetTable();
+  //   },
+  //   []
+  // );
+
+  return (
+    <>
+      <Helmet title="Type" />
+      <Container fluid className="p-0">
+        <h1 className="h3 mb-3">Thống kê loại thiết bị</h1>
+
+        {types.length == 0 && isSearchEmpty() ? (
+          <TypeNoDataComponent />
+        ) : (
+          <TypeTableComponent
+            // table
+            types={types}
+            // paging
+            totalPages={totalPages}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            resetPaging={resetPaging}
+            // sorting
+            currentSort={currentSort}
+            setCurrentSort={setCurrentSort}
+            resetCurrentSort={resetCurrentSort}
+            // search
+            currentSearch={currentSearch}
+            setCurrentSearch={setCurrentSearch}
+            // filter
+            // currentFilter={currentFilter}
+            // setCurrentFilter={setCurrentFilter}
+            // refresh table
+            timeRefreshTable={timeRefreshTable}
+            onResetTable={onResetTable}
+            // onClick
+            // onClickItem={onClickDepartmentItem}
+            onCreate={onShowCreateTypeModal}
+            // onUpdateItem={onShowUpdateDepartmentModal}
+            // onDeleteItem={onShowDeleteDepartmentModal}
+            // onImport={onShowImportAccountModal}
+          />
+        )}
+
+        {isShowCreateTypeModal && (
+          <CreateTypeModal
+            hideModal={hideCreateTypeModal}
+            existsByName={existsByTypeName}
+
+            timeRefreshForm={timeRefreshCreateForm}
+            onSubmit={onCreateType}
+          />
+        )}
+
+        {/* {isShowUpdateDepartmentModal && (
+          <UpdateDepartmentModal
+            hideModal={hideUpdateDepartmentModal}
+            existsByName={existsByDepartmentName}
+            managers={managersForUpdate}
+            detailInfo={detailDepartmentInfo}
+            timeRefreshForm={timeRefreshUpdateForm}
+            onSubmit={onUpdateDepartment}
+          />
+        )} */}
+
+        {/* {isShowDeleteDepartmentModal && (
+          <DeleteDepartmentModal
+            hideModal={hideDeleteDepartmentModal}
+            name={
+              departments.find(
+                (department) => department.id === deletingDepartmentId
+              ).name
+            }
+            onSubmit={onDeleteDepartment}
+          />
+        )} */}
+
+        {/* {isShowImportAccountModal && (
+          <ImportAccountModal
+            hideModal={hideImportAccountModal}
+            departments={departmentsForImport}
+            onChangeExcelFile={onChangeExcelFile}
+            accounts={accountsForImport}
+            isShowTable={isShowImportAccountTable}
+            timeRefreshForm={timeRefreshImportForm}
+            onSubmit={onImportAccounts}
+          />
+        )} */}
+      </Container>
+    </>
+  );
+};
+
+export default TypePage;

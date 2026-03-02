@@ -1,0 +1,65 @@
+/* Hiệu ứng hover */
+.hover-card {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Thiết kế box */
+.custom-card {
+  border-radius: 15px;
+  color: #ffffff;
+  border: none;
+}
+
+/* Mỗi box có một màu nền khác nhau */
+.device-card {
+  background-color: #D808080; /* Màu hồng cam */
+}
+.device-type-card {
+  background-color: #369c9f; /* Màu hồng cam */
+}
+.device-maintenance-card {
+  background-color: #d6d3e9; /* Màu hồng cam */
+}
+
+.account-card {
+  background-color: #92B9E3; /* Màu xanh lá nhạt */
+}
+
+.department-card {
+  background-color: #FFCC80; /* Màu vàng cam nhạt */
+}
+.loan-card {
+  background-color: #528fc7; /* Màu vàng cam nhạt */
+}
+/* Icon styling */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.icon {
+  font-size: 3rem;
+  color: #ffffff;
+}
+
+/* Tiêu đề */
+.card-title {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+/* Tiêu đề Trang */
+h1 {
+  font-weight: 700;
+  color: #34495e;
+  margin-top: 20px;
+}

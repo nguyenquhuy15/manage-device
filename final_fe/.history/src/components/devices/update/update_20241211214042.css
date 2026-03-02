@@ -1,0 +1,12 @@
+.custom-container {
+    background-color: #f0f8ff; /* Màu nền nhạt, dễ nhìn */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .custom-card {
+    background-color: #ffffff; /* Màu trắng cho thẻ */
+    border: 1px solid #ddd; /* Viền nhẹ */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+  }
+  
